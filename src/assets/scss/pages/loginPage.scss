@@ -1,0 +1,37 @@
+@import "../variable";
+
+.login-window {
+  background: $white;
+  overflow: hidden;
+  color: $color-1;
+}
+.login-title {
+    color: $LightBlack;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  width: 90%;
+  margin: 20px auto 10px;
+  font-family: $openSans;
+}
+.login-input {
+  font-family: $openSans;
+  font-size: 14px;
+  display: block;
+  border: 1px solid #0084a51f;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px auto;
+  width: 90%;
+  background: #1f9eab1c;
+  box-shadow: inset 0px 0px 4px #0080a34d;
+  transition: all 0.3s linear;
+  transform: scale(0.97);
+  &:hover , &:focus {
+    outline: none;
+    transform: scale(1);
+  }
+}
+.login-button {
+  background: linear-gradient(to right, $color-1 , $color-2, $color-3);
+}

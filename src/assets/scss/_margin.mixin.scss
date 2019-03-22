@@ -1,0 +1,34 @@
+@import "variable";
+
+@while $startMargin < $endMargin {
+  // margin positive
+  .mt-#{$startMargin}px {
+    margin-top: #{$startMargin}px!important;
+  }
+  .mb-#{$startMargin}px {
+    margin-bottom: #{$startMargin}px!important;
+  }
+  .ml-#{$startMargin}px {
+    margin-left: #{$startMargin}px!important;
+  }
+  .mr-#{$startMargin}px {
+    margin-right: #{$startMargin}px!important;
+  }
+
+  // margin negetive
+
+  .mt--#{$startMargin}px {
+    margin-top: -#{$startMargin}px!important;
+  }
+  .mb--#{$startMargin}px {
+    margin-bottom: -#{$startMargin}px!important;
+  }
+  .ml--#{$startMargin}px {
+    margin-left: -#{$startMargin}px!important;
+  }
+  .mr--#{$startMargin}px {
+    margin-right: -#{$startMargin}px!important;
+  }
+
+  $startMargin: $startMargin + $increment;
+}
