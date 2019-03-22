@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router";
+import { GoogleLogin } from "react-google-login";
 
 class App extends Component {
      constructor(props) {
@@ -26,7 +27,20 @@ class App extends Component {
           if (isMobile) {
                return (
                     <Switch>
-                         <Route exact path='/' component={() => <div> ROOT </div>} />
+                         <Route
+                              exact
+                              path='/'
+                              component={() => (
+                                   <div>
+                                        <GoogleLogin
+                                             clientId='479429734653-ns6uurld7sbm9heir0mjhrlis6tj3kpq.apps.googleusercontent.com'
+                                             buttonText='Login'
+                                             onSuccess={(e) => console.log(e)}
+                                             onFailure={(e) => console.log(e)}
+                                        />
+                                   </div>
+                              )}
+                         />
                          <Route path='/login' component={() => <div>Login</div>} />
                          <Route path='*' exact={true} component={() => <div>Lost</div>} />
                     </Switch>
