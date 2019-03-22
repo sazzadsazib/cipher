@@ -33,7 +33,7 @@ class App extends Component {
                               component={() => (
                                    <div>
                                         <GoogleLogin
-                                             clientId='479429734653-ns6uurld7sbm9heir0mjhrlis6tj3kpq.apps.googleusercontent.com'
+                                             clientId='1026925557409-1u5ni6e53eeongf1p0c4rdk8kotp15bp.apps.googleusercontent.com'
                                              buttonText='Login'
                                              onSuccess={(e) => console.log(e)}
                                              onFailure={(e) => console.log(e)}
