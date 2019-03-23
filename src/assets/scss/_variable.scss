@@ -10,6 +10,7 @@ $color-6: #ee2658;
 $white: #fff;
 $black: #000;
 $LightBlack: #404040;
+$grey: grey;
 
 
 
@@ -27,3 +28,31 @@ $roboto: "Roboto", sans-serif;
 $montserrat: 'Montserrat', sans-serif;
 $openSans: 'Open Sans', sans-serif;
 
+
+//atlassian color
+$atlassian-default: #F4F5F7;
+$atlassian-color: #7A869A;
+
+
+
+//sns
+$facebook: #3b5998;
+
+$transparent: transparent;
+
+// sign types
+
+$warning: #FF545F;
+$success: #3DCE58;
+
+
+//radius
+$radius-small: 5px;
+$radius-medium: 10px;
+$radius-large: 20px;
+
+//shadow
+$card1-shadow: 0 18px 80px 10px rgba(69,65,78,0.08);
+$card2-shadow: 2px 3px 9px 0px #00000030;
+$card3-shadow: 0 10px 20px 0px rgba(69, 65, 78, 0.08);
+$card4-shadow: 0 18px 80px 10px rgba(69,65,78,0.08);

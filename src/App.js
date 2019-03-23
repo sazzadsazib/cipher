@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import RoutePath from "./Utility/RoutePath";
+import "antd/dist/antd.css";
 import "./assets/scss/main.scss";
 
 class App extends Component {
