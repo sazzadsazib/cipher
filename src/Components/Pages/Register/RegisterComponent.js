@@ -4,7 +4,7 @@ import "./../../../assets/scss/main.scss";
 import { Row, Col, Input, Icon, Button } from "antd";
 import Logo from "./../../../assets/images/general/basic-icon.svg";
 
-class LoginComponent extends Component {
+class RegisterComponent extends Component {
      render() {
           return (
                <div className={"login-window"}>
@@ -14,8 +14,8 @@ class LoginComponent extends Component {
                                    <div className={"div-center"}>
                                         <img src={Logo} alt={"logo"} style={{ width: 120 }} />
                                         <br />
-                                        <p className={"card-title mt-10px mb-5px"}>Welcome To Cipher</p>
-                                        <p className={"card-subtitle"}>Please Login to your Acccount</p>
+                                        <p className={"card-title mt-10px mb-5px"}>Register To Cipher</p>
+                                        <p className={"card-subtitle"}>Please Provide Username and Password</p>
                                         <br />
                                         <Input
                                              className={"input-login"}
@@ -35,16 +35,16 @@ class LoginComponent extends Component {
                                         <br />
                                         <br />
                                         <Button type={"cipher-primary"} size={"large"} style={{ width: "100%" }}>
-                                             Login
+                                             Register
                                         </Button>
                                         <br />
                                         <br />
                                         <Button
-                                             onClick={() => this.props.history.push("/register")}
+                                             onClick={() => this.props.history.push("/")}
                                              type={"cipher-primary-inverse"}
                                              size={"large"}
                                              style={{ width: "100%" }}>
-                                             Not an user? &nbsp; <b>Register</b>
+                                             Already a user? &nbsp; <b>Login</b>
                                         </Button>
                                    </div>
                               </div>
@@ -54,4 +54,4 @@ class LoginComponent extends Component {
           );
      }
 }
-export default LoginComponent;
+export default RegisterComponent;
