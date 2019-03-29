@@ -8,19 +8,22 @@ module.exports = () => {
      if (status === "dev") {
           return {
                EnvStatus: "dev",
-               registerUrl: ProductionUrl + "",
+               registerUrl: DevUrl + "/user",
           };
      } else if (status === "production") {
           return {
                EnvStatus: "production",
+               registerUrl: ProductionUrl + "/user",
           };
      } else if (status === "ngrok") {
           return {
                EnvStatus: "ngrok",
+               registerUrl: NgrokUrl + "/user",
           };
      } else if (status === "staging") {
           return {
                EnvStatus: "staging",
+               registerUrl: Staging + "/user",
           };
      } else {
           return {

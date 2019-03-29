@@ -12,6 +12,7 @@ import allReducers from "./Redux/Reducer/allReducers";
 import { Provider } from "react-redux";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+require("dotenv").config();
 
 const createHistory = require("history").createBrowserHistory;
 const history = createHistory();
