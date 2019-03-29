@@ -8,6 +8,7 @@ module.exports = () => {
      if (status === "dev") {
           return {
                EnvStatus: "dev",
+               registerUrl: ProductionUrl + "",
           };
      } else if (status === "production") {
           return {
