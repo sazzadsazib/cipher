@@ -11,6 +11,7 @@ module.exports = () => {
                registerUrl: DevUrl + "/user",
                userAuth: DevUrl + "/userAuth",
                getUserNote: DevUrl + "/getUserNotes",
+               notes: DevUrl + "/notes",
           };
      } else if (status === "production") {
           return {
@@ -18,6 +19,7 @@ module.exports = () => {
                registerUrl: ProductionUrl + "/user",
                userAuth: ProductionUrl + "/userAuth",
                getUserNote: ProductionUrl + "/getUserNotes",
+               notes: ProductionUrl + "/notes",
           };
      } else if (status === "ngrok") {
           return {
@@ -25,6 +27,7 @@ module.exports = () => {
                registerUrl: NgrokUrl + "/user",
                userAuth: NgrokUrl + "/userAuth",
                getUserNote: NgrokUrl + "/getUserNotes",
+               notes: NgrokUrl + "/notes",
           };
      } else if (status === "staging") {
           return {
@@ -32,6 +35,7 @@ module.exports = () => {
                registerUrl: Staging + "/user",
                userAuth: Staging + "/userAuth",
                getUserNote: Staging + "/getUserNotes",
+               notes: Staging + "/notes",
           };
      } else {
           return {

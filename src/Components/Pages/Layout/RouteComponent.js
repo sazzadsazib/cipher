@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import Notes from "./Notes";
+import CreateNotes from "./CreateNotes";
 
 class RouteComponent extends Component {
      render() {
@@ -11,7 +12,11 @@ class RouteComponent extends Component {
                          path='/dashboard/notes'
                          render={(props) => <Notes setCurrentState={this.props.setCurrentState} {...props} />}
                     />
-                    <Route exact path='/notes' render={(props) => <div>Individual notes</div>} />
+                    <Route
+                         exact
+                         path='/dashboard/notes/create'
+                         render={(props) => <CreateNotes setCurrentState={this.props.setCurrentState} {...props} />}
+                    />
                     <Route
                          path='*'
                          exact={true}

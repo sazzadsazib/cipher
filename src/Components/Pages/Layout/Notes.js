@@ -25,13 +25,13 @@ class Notes extends Component {
      render() {
           return (
                <React.Fragment>
-                    <Row>
+                    <Row style={{ margin: 20 }}>
                          {this.state.apiLoaded ? (
                               this.props.noteReducer.notes.length === 0 ? (
                                    <div>No Notes Found</div>
                               ) : (
                                    this.props.noteReducer.notes.map((note) => (
-                                        <Col key={note._id} sm={{ span: 6, offset: 0 }} xs={{ span: 20, offset: 2 }}>
+                                        <Col key={note._id} sm={{ span: 6, offset: 0 }} xs={{ span: 24, offset: 0 }}>
                                              <div className={"note-cards"}>
                                                   <div className={"note-id"}>
                                                        <b>Note ID:</b> &nbsp;{note._id}

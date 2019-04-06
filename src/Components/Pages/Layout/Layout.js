@@ -148,16 +148,16 @@ class DashboardLayout extends Component {
                                         }>
                                         <Menu.Item key='1'>
                                              <span>
+                                                  <Icon type='eye' />
+                                                  <span>Create</span>
+                                             </span>
+                                        </Menu.Item>
+                                        <Menu.Item key='2'>
+                                             <span>
                                                   <Icon type='file-text' />
                                                   <span>Notes</span>
                                              </span>
                                         </Menu.Item>
-                                        {/*<Menu.Item key='2'>*/}
-                                        {/*<span>*/}
-                                        {/*<Icon type='eye' />*/}
-                                        {/*<span>read</span>*/}
-                                        {/*</span>*/}
-                                        {/*</Menu.Item>*/}
                                    </SubMenu>
                                    <Menu.Item key='3'>
                                         <Icon type='setting' />
