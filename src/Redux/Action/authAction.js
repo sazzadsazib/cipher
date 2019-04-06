@@ -1,12 +1,12 @@
 import Axios from "axios";
-const env = require("../env")();
+const env = require("../../env")();
 
 export function userLogin(body) {
      return function(dispatch) {
-          return Axios.post("raondomurl", body)
+          return Axios.post(env.userAuth, body)
                .then(function(response) {
                     dispatch({ type: "GET_AUTH_TOKEN_SUCCESS", payload: response.data });
-                    return true;
+                    return response.data.success;
                })
                .catch(function(error) {
                     dispatch({ type: "GET_AUTH_TOKEN_FAIL", payload: error.response });

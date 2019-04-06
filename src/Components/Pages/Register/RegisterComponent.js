@@ -16,26 +16,37 @@ class RegisterComponent extends Component {
                username: "",
                password: "",
                error: false,
+               isDisabled: false,
           };
           this.registerUser = this.registerUser.bind(this);
      }
 
      registerUser() {
+          this.setState({
+               isDisabled: true,
+          });
           if (this.state.username !== "" && this.state.password !== "") {
-               const password = CryptoJS.AES.encrypt(this.state.password, process.env.REACT_APP_ENC_KEY).toString();
+               const password = CryptoJS.SHA256(this.state.password).toString();
                Axios.post(
                     env.registerUrl,
-                    { username: this.state.username, password: this.state.password },
+                    { username: this.state.username, password: password },
                     { headers: { "Content-Type": "application/json" } }
                )
                     .then((result) => {
                          if (result.data.success === true) {
-                              message.success("Registered Successfully", 2.5).then(message.info("Login now!"), 2.5);
-                              this.props.history.push("/");
+                              // message.success("Registered Successfully", 2.5).then(message.info("Login now!"), 2.5);
+                              this.props.history.push("/?rfr");
                          }
                     })
-                    .catch((e) => console.log(e));
+                    .catch((e) => {
+                         this.setState({
+                              isDisabled: false,
+                         });
+                    });
           } else {
+               this.setState({
+                    isDisabled: false,
+               });
                message.warn("Provide Username & Password to Register");
           }
      }
@@ -60,7 +71,7 @@ class RegisterComponent extends Component {
                                         />
                                         <br />
                                         <br />
-                                        <Input
+                                        <Input.Password
                                              className={"input-login"}
                                              onChange={(e) => this.setState({ password: e.target.value })}
                                              size={"large"}
@@ -71,6 +82,8 @@ class RegisterComponent extends Component {
                                         <br />
                                         <br />
                                         <Button
+                                             disabled={this.state.isDisabled}
+                                             loading={this.state.isDisabled}
                                              onClick={() => this.registerUser()}
                                              type={"cipher-primary"}
                                              size={"large"}
