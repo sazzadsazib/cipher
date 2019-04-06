@@ -83,7 +83,7 @@ class Viewer extends Component {
                                    <p className={"small-title"}>Font Justify</p>
                                    <Radio.Group
                                         className={"minimal-radio-group"}
-                                        size={"default"}
+                                        size={"small"}
                                         value={this.state.align}
                                         onChange={(e) => this.setState({ align: e.target.value })}>
                                         <Radio.Button value='left'>
