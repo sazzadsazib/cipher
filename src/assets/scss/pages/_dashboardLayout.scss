@@ -1,0 +1,70 @@
+@import "../variable";
+.ml80px {
+  margin-left: 80px;
+}
+.ml200px {
+  margin-left: 200px;
+}
+.logo {
+  text-align: center;
+  float: none!important;
+  margin: 15px auto!important;
+  width: 120px;
+  height: 31px;
+  background: hsla(0,0%,100%,.2);
+}
+.logoBrandFold {
+  margin: 0px 0 0 -35px;
+  width: 30px;
+}
+.logoBrand {
+  margin: 0 auto;
+  width: 80px;
+}
+.ant-layout-sider-children {
+  overflow: hidden;
+  border-right: 1px solid #e6e9ec;
+}
+
+.trigger {
+  font-size: 18px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color .3s;
+}
+.platform-data-info{
+  //background: $color-1;
+  border-radius: 5px;
+  padding: 10px;
+  color: $color-2;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.container-dashboard__layout {
+  margin-top: 60px;
+  font-family: $openSans;
+}
+.ant-menu-item-selected, .ant-menu-item:hover, .ant-menu-item-active, .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-submenu-active, .ant-menu-submenu-title:hover {
+  color: $color-1;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background: linear-gradient(to right, $color-2-lightOpacity, $color-1-lightOpacity);
+}
+.ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after {
+  border-right: 3px solid $color-1;
+}
+
+.dashboard-card-layout {
+  background: $white;
+  box-shadow: $card1-shadow;
+  border-radius: $radius-small;
+  margin: 15px;
+  padding: 10px;
+}
+.ant-menu-submenu-vertical > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after, .ant-menu-submenu-vertical-left > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after, .ant-menu-submenu-vertical-right > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after, .ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after, .ant-menu-submenu-vertical > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before, .ant-menu-submenu-vertical-left > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before, .ant-menu-submenu-vertical-right > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before, .ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before {
+  background: linear-gradient(to right, $color-2, $color-1);
+}
+.ant-menu-vertical .ant-menu-submenu-selected, .ant-menu-vertical-left .ant-menu-submenu-selected, .ant-menu-vertical-right .ant-menu-submenu-selected {
+  color: $color-1
+}

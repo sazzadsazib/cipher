@@ -86,7 +86,21 @@ class LoginComponent extends Component {
                                         />
                                         <br /> <br />
                                         {this.props.location.search === "?rfr" ? (
-                                             <Alert message='Register Successful, Login Now' type='success' showIcon closable />
+                                             <Alert
+                                                  style={{ marginBottom: 10 }}
+                                                  message='Register Successful, Login Now'
+                                                  type='success'
+                                                  showIcon
+                                                  closable
+                                             />
+                                        ) : this.props.location.search === "?logout" ? (
+                                             <Alert
+                                                  style={{ marginBottom: 10 }}
+                                                  message='Logout Successful'
+                                                  type='success'
+                                                  showIcon
+                                                  closable
+                                             />
                                         ) : (
                                              ""
                                         )}
