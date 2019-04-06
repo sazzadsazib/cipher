@@ -54,7 +54,7 @@ class LoginComponent extends Component {
           }
      }
      componentDidMount() {
-          if (this.props.authReducer.auth.success) {
+          if (this.props.authReducer.auth !== undefined && this.props.authReducer.auth.success) {
                this.props.history.push("/dashboard/notes");
           }
      }

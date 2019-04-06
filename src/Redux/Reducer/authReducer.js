@@ -1,7 +1,6 @@
 let defaultState = {};
 
 export const authReducer = (state = defaultState, action) => {
-     console.log(action.payload);
      switch (action.type) {
           case "GET_AUTH_TOKEN_SUCCESS":
                return Object.assign({}, state, {

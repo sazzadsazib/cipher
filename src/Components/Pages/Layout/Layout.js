@@ -36,12 +36,12 @@ class DashboardLayout extends Component {
                this.setState({
                     currentActiveState: "1",
                });
-               this.props.history.push("/dashboard/notes");
+               this.props.history.push("/dashboard/notes/create");
           } else if (key === "2") {
                this.setState({
                     currentActiveState: "2",
                });
-               this.props.history.push("/dashboard/notes/read");
+               this.props.history.push("/dashboard/notes");
           } else if (key === "3") {
                this.setState({
                     currentActiveState: "3",
@@ -104,14 +104,14 @@ class DashboardLayout extends Component {
                                         }>
                                         <Menu.Item key='1'>
                                              <span>
-                                                  <Icon type='file-text' />
-                                                  <span>Notes</span>
+                                                  <Icon type='eye' />
+                                                  <span>Create</span>
                                              </span>
                                         </Menu.Item>
                                         <Menu.Item key='2'>
                                              <span>
-                                                  <Icon type='eye' />
-                                                  <span>read</span>
+                                                  <Icon type='file-text' />
+                                                  <span>Notes</span>
                                              </span>
                                         </Menu.Item>
                                    </SubMenu>
@@ -152,12 +152,12 @@ class DashboardLayout extends Component {
                                                   <span>Notes</span>
                                              </span>
                                         </Menu.Item>
-                                        <Menu.Item key='2'>
-                                             <span>
-                                                  <Icon type='eye' />
-                                                  <span>read</span>
-                                             </span>
-                                        </Menu.Item>
+                                        {/*<Menu.Item key='2'>*/}
+                                        {/*<span>*/}
+                                        {/*<Icon type='eye' />*/}
+                                        {/*<span>read</span>*/}
+                                        {/*</span>*/}
+                                        {/*</Menu.Item>*/}
                                    </SubMenu>
                                    <Menu.Item key='3'>
                                         <Icon type='setting' />
@@ -249,7 +249,7 @@ class DashboardLayout extends Component {
                                    </Menu>
                               </Header>
                          )}
-                         <div className='container-dashboard__layout' style={{ height: "calc(100vh - 60px)" }}>
+                         <div className='container-dashboard__layout' style={{ minHeight: "calc(100vh - 60px)" }}>
                               <RouteComponent setCurrentState={(x) => this.setState({ currentActiveState: x })} />
                          </div>
                          {/*<Footer style={{ textAlign: 'center' }}>*/}
