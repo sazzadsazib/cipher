@@ -16,6 +16,7 @@ class Notes extends Component {
           };
      }
      componentDidMount() {
+          this.props.isMenuAvailable(false);
           this.props
                .getNotes({ username: this.props.authReducer.auth.data.username, storedPassword: this.props.authReducer.auth.data.password })
                .then((result) => setTimeout(() => this.setState({ apiLoaded: true }), 300))

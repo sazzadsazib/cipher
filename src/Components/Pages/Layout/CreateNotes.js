@@ -24,6 +24,7 @@ class CreateNotes extends Component {
           };
      }
      componentDidMount() {
+          this.props.isMenuAvailable(false);
           this.props.setCurrentState("1");
      }
      postData() {
