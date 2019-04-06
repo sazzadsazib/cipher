@@ -31,7 +31,12 @@ class Notes extends Component {
                                    <div>No Notes Found</div>
                               ) : (
                                    this.props.noteReducer.notes.map((note) => (
-                                        <Col key={note._id} sm={{ span: 6, offset: 0 }} xs={{ span: 24, offset: 0 }}>
+                                        <Col
+                                             key={note._id}
+                                             lg={{ span: 6, offset: 0 }}
+                                             md={{ span: 8, offset: 0 }}
+                                             sm={{ span: 12, offset: 0 }}
+                                             xs={{ span: 24, offset: 0 }}>
                                              <div className={"note-cards"}>
                                                   <div className={"note-id"}>
                                                        <b>Note ID:</b> &nbsp;{note._id}
@@ -46,11 +51,11 @@ class Notes extends Component {
                                                   <div className={"created-at"}>Created : &nbsp;{moment(note.createdAt).fromNow()}</div>
                                                   <Tooltip placement={"top"} title={"Coming Soon"}>
                                                        <Button
-                                                            type={"cipher-primary-inverse div-center light-grey-bg"}
+                                                            type={"cipher-primary-inverse div-center flex light-grey-bg"}
                                                             className={"mt-15px"}
                                                             size={"small"}
                                                             style={{ width: "80%" }}>
-                                                            <span className={"text-center div-center"}>
+                                                            <span className={"text-center div-center flex"}>
                                                                  <Icon type='eye' theme='filled' /> Mark As Read
                                                             </span>
                                                        </Button>

@@ -16,6 +16,7 @@ class LoginComponent extends Component {
                isLoading: 0, //0 meaning not active, 1 means active, 2 means not active & error, 3 means not active & success, 4 means not active & username not found, 5 means not active & password not found
           };
           this.fetchLoginData = this.fetchLoginData.bind(this);
+          this.checkEnter = this.checkEnter.bind(this);
      }
      fetchLoginData() {
           if (this.state.username !== "" && this.state.password !== "") {
@@ -58,6 +59,11 @@ class LoginComponent extends Component {
                this.props.history.push("/dashboard/notes");
           }
      }
+     checkEnter(e) {
+          if (e.key.toLowerCase() === "enter") {
+               this.fetchLoginData();
+          }
+     }
      render() {
           return (
                <div className={"login-window"}>
@@ -72,6 +78,7 @@ class LoginComponent extends Component {
                                         <br />
                                         <Input
                                              className={"input-login"}
+                                             onKeyPress={(e) => this.checkEnter(e)}
                                              value={this.state.username}
                                              onChange={(e) => this.setState({ username: e.target.value })}
                                              size={"large"}
@@ -82,6 +89,7 @@ class LoginComponent extends Component {
                                         <br />
                                         <Input.Password
                                              className={"input-login"}
+                                             onKeyPress={(e) => this.checkEnter(e)}
                                              value={this.state.password}
                                              onChange={(e) => this.setState({ password: e.target.value })}
                                              size={"large"}
@@ -122,7 +130,6 @@ class LoginComponent extends Component {
                                         )}
                                         <br />
                                         <Button
-                                             onKeyPress={(e) => console.log(e)}
                                              icon={"lock"}
                                              loading={this.state.isLoading === 1 ? true : false}
                                              onClick={() => this.fetchLoginData()}
