@@ -28,7 +28,7 @@ class LoginComponent extends Component {
                     .then((result) => {
                          if (result) {
                               if (this.props.authReducer.auth.success) {
-                                   this.props.history.push("/home");
+                                   this.props.history.push("/dashboard/notes");
                               } else {
                                    this.setState({
                                         isLoading: 2,
@@ -51,6 +51,11 @@ class LoginComponent extends Component {
                          isLoading: 5,
                     });
                }
+          }
+     }
+     componentDidMount() {
+          if (this.props.authReducer.auth.success) {
+               this.props.history.push("/dashboard/notes");
           }
      }
      render() {
@@ -117,6 +122,7 @@ class LoginComponent extends Component {
                                         )}
                                         <br />
                                         <Button
+                                             onKeyPress={(e) => console.log(e)}
                                              icon={"lock"}
                                              loading={this.state.isLoading === 1 ? true : false}
                                              onClick={() => this.fetchLoginData()}
