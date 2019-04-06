@@ -37,7 +37,9 @@ class Notes extends Component {
                                              md={{ span: 8, offset: 0 }}
                                              sm={{ span: 12, offset: 0 }}
                                              xs={{ span: 24, offset: 0 }}>
-                                             <div className={"note-cards"}>
+                                             <div
+                                                  className={"note-cards"}
+                                                  onClick={() => this.props.history.push("/dashboard/notes/" + note._id)}>
                                                   <div className={"note-id"}>
                                                        <b>Note ID:</b> &nbsp;{note._id}
                                                   </div>

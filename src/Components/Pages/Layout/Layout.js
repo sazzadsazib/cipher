@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import "antd/dist/antd.css";
-import { Layout, Menu, Icon, Dropdown, message } from "antd";
+import { Layout, Menu, Icon, Dropdown, message, Tooltip } from "antd";
 import "../../../assets/scss/main.scss";
 import "./../../../assets/scss/pages/_dashboardLayout.scss";
 import Logo from "./../../../assets/images/general/full_logo.svg";
 import LogoSmall from "./../../../assets/images/general/basic-icon.svg";
 import AdminAvatar from "./../../../assets/images/general/admin_avatar.png";
+import offline from "./../../../assets/images/general/offline.svg";
+import online from "./../../../assets/images/general/online.svg";
 import { connect } from "react-redux";
 import RouteComponent from "./RouteComponent";
+import { Offline, Online } from "react-detect-offline";
 
 const { Header, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -200,6 +203,18 @@ class DashboardLayout extends Component {
                                         mode='horizontal'
                                         defaultSelectedKeys={[this.state.currentActiveState]}
                                         style={{ lineHeight: "64px", float: "right", height: "0px" }}>
+                                        <Menu.Item key='offline-online'>
+                                             <Online>
+                                                  <Tooltip title={"You Are Connected to Internet"} placement={"bottom"}>
+                                                       <img className='image-round' src={online} alt='' width={30} />{" "}
+                                                  </Tooltip>
+                                             </Online>
+                                             <Offline>
+                                                  <Tooltip title={"You Are Not Connected to Internet"} placement={"bottom"}>
+                                                       <img className='image-round' src={offline} alt='' width={30} />{" "}
+                                                  </Tooltip>
+                                             </Offline>
+                                        </Menu.Item>
                                         <Menu.Item key='3'>
                                              <Dropdown overlay={ProfileMenu}>
                                                   <div className='ant-dropdown-link'>
@@ -238,6 +253,18 @@ class DashboardLayout extends Component {
                                         mode='horizontal'
                                         defaultSelectedKeys={[this.state.currentActiveState]}
                                         style={{ lineHeight: "64px", float: "right", height: "0px" }}>
+                                        <Menu.Item key='offline-online'>
+                                             <Online>
+                                                  <Tooltip title={"You Are Connected to Internet"} placement={"bottom"}>
+                                                       <img className='image-round' src={online} alt='' width={30} />{" "}
+                                                  </Tooltip>
+                                             </Online>
+                                             <Offline>
+                                                  <Tooltip title={"You Are Not Connected to Internet"} placement={"bottom"}>
+                                                       <img className='image-round' src={offline} alt='' width={30} />{" "}
+                                                  </Tooltip>
+                                             </Offline>
+                                        </Menu.Item>
                                         <Menu.Item key='3'>
                                              <Dropdown overlay={ProfileMenu}>
                                                   <div className='ant-dropdown-link'>

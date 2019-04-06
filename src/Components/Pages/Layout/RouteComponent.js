@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import Notes from "./Notes";
 import CreateNotes from "./CreateNotes";
+import Viewer from "./Viewer/Viewer";
 
 class RouteComponent extends Component {
      render() {
@@ -16,6 +17,11 @@ class RouteComponent extends Component {
                          exact
                          path='/dashboard/notes/create'
                          render={(props) => <CreateNotes setCurrentState={this.props.setCurrentState} {...props} />}
+                    />
+                    <Route
+                         exact
+                         path='/dashboard/notes/:id'
+                         render={(props) => <Viewer setCurrentState={this.props.setCurrentState} {...props} />}
                     />
                     <Route
                          path='*'
