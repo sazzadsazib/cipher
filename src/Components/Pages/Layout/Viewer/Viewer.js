@@ -10,7 +10,7 @@ class Viewer extends Component {
           super(props);
           this.state = {
                currentNote: {},
-               fontSize: 16,
+               fontSize: 20,
                fonts: "merriweather",
                align: "left",
           };
