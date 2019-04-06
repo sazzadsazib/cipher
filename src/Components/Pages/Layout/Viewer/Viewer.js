@@ -74,6 +74,8 @@ class Viewer extends Component {
                                              <Option value='open-sans'>Open Sans</Option>
                                              <Option value='roboto'>Roboto</Option>
                                              <Option value='montserrat'>Montserrat</Option>
+                                             <Option value='indie-flower'>Indie Flower</Option>
+                                             <Option value='bitter'>Bitter</Option>
                                         </OptGroup>
                                    </Select>
                               </Col>
@@ -81,7 +83,7 @@ class Viewer extends Component {
                                    <p className={"small-title"}>Font Justify</p>
                                    <Radio.Group
                                         className={"minimal-radio-group"}
-                                        size={"small"}
+                                        size={"default"}
                                         value={this.state.align}
                                         onChange={(e) => this.setState({ align: e.target.value })}>
                                         <Radio.Button value='left'>
