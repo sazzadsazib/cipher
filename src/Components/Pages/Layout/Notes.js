@@ -16,6 +16,7 @@ class Notes extends Component {
           };
      }
      componentDidMount() {
+          this.props.isMenuAvailable(false);
           this.props
                .getNotes({ username: this.props.authReducer.auth.data.username, storedPassword: this.props.authReducer.auth.data.password })
                .then((result) => setTimeout(() => this.setState({ apiLoaded: true }), 300))
@@ -37,7 +38,9 @@ class Notes extends Component {
                                              md={{ span: 8, offset: 0 }}
                                              sm={{ span: 12, offset: 0 }}
                                              xs={{ span: 24, offset: 0 }}>
-                                             <div className={"note-cards"}>
+                                             <div
+                                                  className={"note-cards"}
+                                                  onClick={() => this.props.history.push("/dashboard/notes/" + note._id)}>
                                                   <div className={"note-id"}>
                                                        <b>Note ID:</b> &nbsp;{note._id}
                                                   </div>

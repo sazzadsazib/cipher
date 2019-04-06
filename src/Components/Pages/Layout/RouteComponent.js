@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import Notes from "./Notes";
 import CreateNotes from "./CreateNotes";
+import Viewer from "./Viewer/Viewer";
 
 class RouteComponent extends Component {
      render() {
@@ -10,12 +11,33 @@ class RouteComponent extends Component {
                     <Route
                          exact
                          path='/dashboard/notes'
-                         render={(props) => <Notes setCurrentState={this.props.setCurrentState} {...props} />}
+                         render={(props) => (
+                              <Notes isMenuAvailable={this.props.isMenuAvailable} setCurrentState={this.props.setCurrentState} {...props} />
+                         )}
                     />
                     <Route
                          exact
                          path='/dashboard/notes/create'
-                         render={(props) => <CreateNotes setCurrentState={this.props.setCurrentState} {...props} />}
+                         render={(props) => (
+                              <CreateNotes
+                                   isMenuAvailable={this.props.isMenuAvailable}
+                                   setCurrentState={this.props.setCurrentState}
+                                   {...props}
+                              />
+                         )}
+                    />
+                    <Route
+                         exact
+                         path='/dashboard/notes/:noteId'
+                         render={(props) => (
+                              <Viewer
+                                   isMenuAvailable={this.props.isMenuAvailable}
+                                   visible={this.props.visible}
+                                   hideVisible={this.props.hideVisible}
+                                   setCurrentState={this.props.setCurrentState}
+                                   {...props}
+                              />
+                         )}
                     />
                     <Route
                          path='*'
