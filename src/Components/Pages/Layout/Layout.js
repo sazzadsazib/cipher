@@ -13,7 +13,6 @@ import RouteComponent from "./RouteComponent";
 import { Offline, Online } from "react-detect-offline";
 
 const { Header, Sider } = Layout;
-const SubMenu = Menu.SubMenu;
 
 class DashboardLayout extends Component {
      constructor(props) {
@@ -40,16 +39,19 @@ class DashboardLayout extends Component {
           if (key === "1") {
                this.setState({
                     currentActiveState: "1",
+                    collapsed: true,
                });
                this.props.history.push("/dashboard/notes/create");
           } else if (key === "2") {
                this.setState({
                     currentActiveState: "2",
+                    collapsed: true,
                });
                this.props.history.push("/dashboard/notes");
           } else if (key === "3") {
                this.setState({
                     currentActiveState: "3",
+                    collapsed: true,
                });
                this.props.history.push("/dashboard/settings");
           }
@@ -99,27 +101,18 @@ class DashboardLayout extends Component {
                                    mode='inline'
                                    selectedKeys={["" + this.state.currentActiveState]}
                                    onClick={this.onNavClick}>
-                                   <SubMenu
-                                        key='notes'
-                                        title={
-                                             <span>
-                                                  <Icon type='file-text' />
-                                                  <span>Notes</span>
-                                             </span>
-                                        }>
-                                        <Menu.Item key='1'>
-                                             <span>
-                                                  <Icon type='eye' />
-                                                  <span>Create</span>
-                                             </span>
-                                        </Menu.Item>
-                                        <Menu.Item key='2'>
-                                             <span>
-                                                  <Icon type='file-text' />
-                                                  <span>Notes</span>
-                                             </span>
-                                        </Menu.Item>
-                                   </SubMenu>
+                                   <Menu.Item key='1'>
+                                        <span>
+                                             <Icon type='form' />
+                                             <span>Create</span>
+                                        </span>
+                                   </Menu.Item>
+                                   <Menu.Item key='2'>
+                                        <span>
+                                             <Icon type='file-text' />
+                                             <span>Notes</span>
+                                        </span>
+                                   </Menu.Item>
                                    <Menu.Item key='3'>
                                         <Icon type='setting' />
                                         <span>Settings</span>
@@ -143,27 +136,18 @@ class DashboardLayout extends Component {
                                    mode='inline'
                                    selectedKeys={["" + this.state.currentActiveState]}
                                    onClick={this.onNavClick}>
-                                   <SubMenu
-                                        key='notes'
-                                        title={
-                                             <span>
-                                                  <Icon type='file-text' />
-                                                  <span>Notes</span>
-                                             </span>
-                                        }>
-                                        <Menu.Item key='1'>
-                                             <span>
-                                                  <Icon type='eye' />
-                                                  <span>Create</span>
-                                             </span>
-                                        </Menu.Item>
-                                        <Menu.Item key='2'>
-                                             <span>
-                                                  <Icon type='file-text' />
-                                                  <span>Notes</span>
-                                             </span>
-                                        </Menu.Item>
-                                   </SubMenu>
+                                   <Menu.Item key='1'>
+                                        <span>
+                                             <Icon type='form' />
+                                             <span>Create</span>
+                                        </span>
+                                   </Menu.Item>
+                                   <Menu.Item key='2'>
+                                        <span>
+                                             <Icon type='file-text' />
+                                             <span>Notes</span>
+                                        </span>
+                                   </Menu.Item>
                                    <Menu.Item key='3'>
                                         <Icon type='setting' />
                                         <span>Settings</span>
@@ -205,17 +189,21 @@ class DashboardLayout extends Component {
                                         mode='horizontal'
                                         defaultSelectedKeys={[this.state.currentActiveState]}
                                         style={{ lineHeight: "64px", float: "right", height: "0px" }}>
-                                        <Menu.Item key='offline-online'>
-                                             <Button
-                                                  onClick={() => this.setState({ visible: true })}
-                                                  icon={"setting"}
-                                                  type={"cipher-primary-inverse"}
-                                                  size={"large"}
-                                                  className={"light-grey-bg"}
-                                                  style={{ width: "100%" }}>
-                                                  Options
-                                             </Button>
-                                        </Menu.Item>
+                                        {this.state.isMenuAvailable ? (
+                                             <Menu.Item key='offline-online-2'>
+                                                  <Button
+                                                       onClick={() => this.setState({ visible: true })}
+                                                       icon={"setting"}
+                                                       type={"cipher-primary-inverse"}
+                                                       size={"large"}
+                                                       className={"light-grey-bg"}
+                                                       style={{ width: "100%" }}>
+                                                       Options
+                                                  </Button>
+                                             </Menu.Item>
+                                        ) : (
+                                             ""
+                                        )}
                                         <Menu.Item key='offline-online'>
                                              <Online>
                                                   <Tooltip title={"You Are Connected to Internet"} placement={"bottom"}>
@@ -279,7 +267,7 @@ class DashboardLayout extends Component {
                                                   </Button>
                                              </Menu.Item>
                                         ) : (
-                                             <Menu.Item key='offline-online'>
+                                             <Menu.Item key='on-offline'>
                                                   <Online>
                                                        <Tooltip title={"You Are Connected to Internet"} placement={"bottom"}>
                                                             <img className='image-round' src={online} alt='' width={30} />{" "}
@@ -311,7 +299,7 @@ class DashboardLayout extends Component {
                          <div className='container-dashboard__layout' style={{ minHeight: "calc(100vh - 60px)" }}>
                               <RouteComponent
                                    visible={this.state.visible}
-                                   hideVisible={() => this.setState({ visible: false })}
+                                   setVisible={(x) => this.setState({ visible: x })}
                                    setCurrentState={(x) => this.setState({ currentActiveState: x })}
                                    isMenuAvailable={(x) => this.setState({ isMenuAvailable: x })}
                               />

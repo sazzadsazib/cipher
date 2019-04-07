@@ -33,7 +33,7 @@ class RouteComponent extends Component {
                               <Viewer
                                    isMenuAvailable={this.props.isMenuAvailable}
                                    visible={this.props.visible}
-                                   hideVisible={this.props.hideVisible}
+                                   setVisible={this.props.setVisible}
                                    setCurrentState={this.props.setCurrentState}
                                    {...props}
                               />

@@ -1,9 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Row, Col, Button, Drawer, Slider, Divider, Select, Radio, Icon } from "antd";
+import { Row, Col, Button, Drawer, Slider, Divider, Select, Radio, Icon, notification } from "antd";
 import "./../../../../assets/scss/pages/_viewer.scss";
+import moment from "moment";
 
 const { Option, OptGroup } = Select;
+const openNotificationWithIcon = (type, title, info) => {
+     notification[type]({
+          message: title,
+          description: info,
+          placement: "bottom",
+          duration: 2.5,
+     });
+};
 
 class Viewer extends Component {
      constructor(props) {
@@ -11,30 +20,45 @@ class Viewer extends Component {
           this.state = {
                currentNote: {},
                fontSize: 20,
-               fonts: "merriweather",
+               fonts: "bitter",
                align: "left",
           };
      }
 
      componentDidMount() {
-          this.props.isMenuAvailable(true);
+          this.props.isMenuAvailable(false);
           const currentNote = this.props.noteReducer.notes.filter((e) => e._id === this.props.match.params.noteId);
           if (currentNote.length !== 0) {
                this.setState({
                     currentNote: currentNote[0],
                });
           }
+          openNotificationWithIcon("info", "Tips: Double Tap!", "Double Tap to open options, change fonts!");
      }
      render() {
           return (
                <div className={"layout-container"}>
                     <Row>
                          <Col xs={24}>
-                              <p
+                              <div
+                                   className={this.state.fonts}
+                                   style={{
+                                        fontSize: this.state.fontSize * 1.5,
+                                        textAlign: this.state.align,
+                                        whiteSpace: "pre-line",
+                                        marginBottom: 30,
+                                   }}>
+                                   {this.state.currentNote !== {} ? this.state.currentNote.notesTitle : ""}
+                                   <p style={{ fontSize: this.state.fontSize * 0.6, color: "grey" }}>
+                                        Added {moment(this.state.currentNote.createdAt).fromNow()}
+                                   </p>
+                              </div>
+                              <div
+                                   onDoubleClick={() => this.props.setVisible(true)}
                                    className={this.state.fonts}
                                    style={{ fontSize: this.state.fontSize, textAlign: this.state.align, whiteSpace: "pre-line" }}>
                                    {this.state.currentNote !== {} ? this.state.currentNote.notesData : ""}
-                              </p>
+                              </div>
                          </Col>
                          <br />
                          <Col sm={{ span: 4, offset: 10 }} xs={{ span: 24, offset: 0 }}>
@@ -54,12 +78,12 @@ class Viewer extends Component {
                          placement={"bottom"}
                          closable={true}
                          height={"50%"}
-                         onClose={(e) => this.props.hideVisible("false")}
+                         onClose={(e) => this.props.setVisible(false)}
                          visible={this.props.visible}>
                          <Row>
                               <Col xs={24}>
                                    <p className={"small-title"}>Font Size</p>
-                                   <Slider min={8} max={80} onChange={(e) => this.setState({ fontSize: e })} value={this.state.fontSize} />
+                                   <Slider min={8} max={50} onChange={(e) => this.setState({ fontSize: e })} value={this.state.fontSize} />
                                    <Divider />
                               </Col>
                               <Col xs={16}>
@@ -70,12 +94,12 @@ class Viewer extends Component {
                                         style={{ width: "90%" }}
                                         onChange={(e) => this.setState({ fonts: e })}>
                                         <OptGroup label='Font Family'>
+                                             <Option value='bitter'>Bitter</Option>
                                              <Option value='merriweather'>Merriweather</Option>
                                              <Option value='open-sans'>Open Sans</Option>
                                              <Option value='roboto'>Roboto</Option>
                                              <Option value='montserrat'>Montserrat</Option>
                                              <Option value='indie-flower'>Indie Flower</Option>
-                                             <Option value='bitter'>Bitter</Option>
                                         </OptGroup>
                                    </Select>
                               </Col>

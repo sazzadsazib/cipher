@@ -17,10 +17,17 @@ class Notes extends Component {
      }
      componentDidMount() {
           this.props.isMenuAvailable(false);
-          this.props
-               .getNotes({ username: this.props.authReducer.auth.data.username, storedPassword: this.props.authReducer.auth.data.password })
-               .then((result) => setTimeout(() => this.setState({ apiLoaded: true }), 300))
-               .catch((e) => console.log(e));
+          if (this.props.noteReducer.notes === undefined) {
+               this.props
+                    .getNotes({
+                         username: this.props.authReducer.auth.data.username,
+                         storedPassword: this.props.authReducer.auth.data.password,
+                    })
+                    .then((result) => setTimeout(() => this.setState({ apiLoaded: true }), 300))
+                    .catch((e) => console.log(e));
+          } else {
+               this.setState({ apiLoaded: true });
+          }
           this.props.setCurrentState("2");
      }
      render() {

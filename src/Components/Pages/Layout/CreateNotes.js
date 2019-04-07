@@ -11,6 +11,7 @@ const openNotificationWithIcon = (type, title, info) => {
      notification[type]({
           message: title,
           description: info,
+          placement: "bottom",
      });
 };
 
@@ -76,15 +77,15 @@ class CreateNotes extends Component {
                <React.Fragment>
                     <Row>
                          <Col md={{ span: 22, offset: 1 }} xs={24}>
-                              <Row>
-                                   <Col md={{ span: 24, offset: 0 }} xs={{ span: 16, offset: 4 }}>
-                                        {/*{console.log(this.props)}*/}
-                                        <div onClick={() => this.props.history.push("/dashboard/notes")} className={"caret-back mt-40px"}>
-                                             <Icon type='left' /> &nbsp; Back to Notes
-                                        </div>
-                                        <div className={"caret-title"}>Create Your Notes</div>
-                                   </Col>
-                              </Row>
+                              {/*<Row>*/}
+                              {/*<Col md={{ span: 24, offset: 0 }} xs={{ span: 16, offset: 4 }}>*/}
+                              {/*/!*{console.log(this.props)}*!/*/}
+                              {/*<div onClick={() => this.props.history.push("/dashboard/notes")} className={"caret-back mt-40px"}>*/}
+                              {/*<Icon type='left' /> &nbsp; Back to Notes*/}
+                              {/*</div>*/}
+                              {/*<div className={"caret-title"}>Create Your Notes</div>*/}
+                              {/*</Col>*/}
+                              {/*</Row>*/}
                               <Row className={"dashboard-normal-card"} style={{ minHeight: "70vh" }}>
                                    <Col sm={{ span: 16, offset: 4 }} xs={{ span: 22, offset: 1 }}>
                                         <div className={"title-post-note"}>Provide a Title</div>
