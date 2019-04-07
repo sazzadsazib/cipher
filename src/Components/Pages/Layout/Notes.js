@@ -16,7 +16,7 @@ class Notes extends Component {
           };
      }
      componentDidMount() {
-          this.props.isMenuAvailable(false);
+          this.props.isMenuAvailable(true);
           if (this.props.noteReducer.notes === undefined) {
                this.props
                     .getNotes({

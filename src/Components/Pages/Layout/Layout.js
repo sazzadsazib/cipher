@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "antd/dist/antd.css";
-import { Layout, Menu, Icon, Dropdown, message, Tooltip, Button } from "antd";
+import { Layout, Menu, Icon, Dropdown, message, Tooltip, Button, notification } from "antd";
 import "../../../assets/scss/main.scss";
 import "./../../../assets/scss/pages/_dashboardLayout.scss";
 import Logo from "./../../../assets/images/general/full_logo.svg";
@@ -11,8 +11,18 @@ import online from "./../../../assets/images/general/online.svg";
 import { connect } from "react-redux";
 import RouteComponent from "./RouteComponent";
 import { Offline, Online } from "react-detect-offline";
+import { getNotes } from "../../../Redux/Action/notesAction";
 
 const { Header, Sider } = Layout;
+
+const openNotificationWithIcon = (type, title, info) => {
+     notification[type]({
+          message: title,
+          description: info,
+          placement: "bottom",
+          duration: 2.5,
+     });
+};
 
 class DashboardLayout extends Component {
      constructor(props) {
@@ -22,6 +32,7 @@ class DashboardLayout extends Component {
                currentActiveState: "",
                isMenuAvailable: false,
                visible: false,
+               apiLoaded: false,
           };
           this.toggle = this.toggle.bind(this);
           this.onNavClick = this.onNavClick.bind(this);
@@ -191,15 +202,51 @@ class DashboardLayout extends Component {
                                         style={{ lineHeight: "64px", float: "right", height: "0px" }}>
                                         {this.state.isMenuAvailable ? (
                                              <Menu.Item key='offline-online-2'>
-                                                  <Button
-                                                       onClick={() => this.setState({ visible: true })}
-                                                       icon={"setting"}
-                                                       type={"cipher-primary-inverse"}
-                                                       size={"large"}
-                                                       className={"light-grey-bg"}
-                                                       style={{ width: "100%" }}>
-                                                       Options
-                                                  </Button>
+                                                  <Tooltip placement={"bottom"} title={"Reload from Internet !"}>
+                                                       <Button
+                                                            onClick={() => {
+                                                                 this.setState(
+                                                                      {
+                                                                           apiLoaded: true,
+                                                                      },
+                                                                      () => {
+                                                                           this.props
+                                                                                .getNotes({
+                                                                                     username: this.props.authReducer.auth.data.username,
+                                                                                     storedPassword: this.props.authReducer.auth.data
+                                                                                          .password,
+                                                                                })
+                                                                                .then((r) => {
+                                                                                     if (r) {
+                                                                                          openNotificationWithIcon(
+                                                                                               "success",
+                                                                                               "Updated !",
+                                                                                               "Congrats You have New Staffs to Read ;)"
+                                                                                          );
+                                                                                     } else {
+                                                                                          openNotificationWithIcon(
+                                                                                               "error",
+                                                                                               "Failed !",
+                                                                                               "Here Comes The Bug Again ;("
+                                                                                          );
+                                                                                     }
+                                                                                     this.setState({
+                                                                                          apiLoaded: false,
+                                                                                     });
+                                                                                })
+                                                                                .catch((e) => console.log(e));
+                                                                      }
+                                                                 );
+                                                            }}
+                                                            icon={"reload"}
+                                                            loading={this.state.apiLoaded}
+                                                            type={"cipher-primary-inverse"}
+                                                            size={"large"}
+                                                            className={"light-grey-bg"}
+                                                            style={{ width: "100%" }}>
+                                                            Reload
+                                                       </Button>
+                                                  </Tooltip>
                                              </Menu.Item>
                                         ) : (
                                              ""
@@ -256,15 +303,51 @@ class DashboardLayout extends Component {
                                         style={{ lineHeight: "64px", float: "right", height: "0px" }}>
                                         {this.state.isMenuAvailable && this.state.collapsed ? (
                                              <Menu.Item key='offline-online'>
-                                                  <Button
-                                                       onClick={() => this.setState({ visible: true })}
-                                                       icon={"setting"}
-                                                       type={"cipher-primary-inverse"}
-                                                       size={"large"}
-                                                       className={"light-grey-bg"}
-                                                       style={{ width: "100%" }}>
-                                                       Options
-                                                  </Button>
+                                                  <Tooltip placement={"bottom"} title={"Reload from Internet !"}>
+                                                       <Button
+                                                            onClick={() => {
+                                                                 this.setState(
+                                                                      {
+                                                                           apiLoaded: true,
+                                                                      },
+                                                                      () => {
+                                                                           this.props
+                                                                                .getNotes({
+                                                                                     username: this.props.authReducer.auth.data.username,
+                                                                                     storedPassword: this.props.authReducer.auth.data
+                                                                                          .password,
+                                                                                })
+                                                                                .then((r) => {
+                                                                                     if (r) {
+                                                                                          openNotificationWithIcon(
+                                                                                               "success",
+                                                                                               "Updated !",
+                                                                                               "Congrats You have New Staffs to Read ;)"
+                                                                                          );
+                                                                                     } else {
+                                                                                          openNotificationWithIcon(
+                                                                                               "error",
+                                                                                               "Failed !",
+                                                                                               "Here Comes The Bug Again ;("
+                                                                                          );
+                                                                                     }
+                                                                                     this.setState({
+                                                                                          apiLoaded: false,
+                                                                                     });
+                                                                                })
+                                                                                .catch((e) => console.log(e));
+                                                                      }
+                                                                 );
+                                                            }}
+                                                            loading={this.state.apiLoaded}
+                                                            icon={"reload"}
+                                                            type={"cipher-primary-inverse"}
+                                                            size={"large"}
+                                                            className={"light-grey-bg"}
+                                                            style={{ width: "100%" }}>
+                                                            Reload
+                                                       </Button>
+                                                  </Tooltip>
                                              </Menu.Item>
                                         ) : (
                                              <Menu.Item key='on-offline'>
@@ -316,7 +399,17 @@ class DashboardLayout extends Component {
 function mapStateToProps(store) {
      return {
           authReducer: store.authReducer,
+          noteReducer: store.noteReducer,
      };
 }
 
-export default connect(mapStateToProps)(DashboardLayout);
+const mapDispatchToState = (dispatch, ownProps) => {
+     return {
+          getNotes: (data) => dispatch(getNotes(data)),
+     };
+};
+
+export default connect(
+     mapStateToProps,
+     mapDispatchToState
+)(DashboardLayout);
