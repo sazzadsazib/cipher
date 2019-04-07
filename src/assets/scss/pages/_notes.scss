@@ -93,3 +93,11 @@ textarea.input-login {
      color: $atlassian-color;
      border: none;
 }
+.no-data-text {
+     font-weight: 600;
+     font-size: 20px;
+     font-family: $openSans;
+     text-align: center;
+     color: $grey;
+     margin-top: 10px;
+}

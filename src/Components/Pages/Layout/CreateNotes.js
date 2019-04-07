@@ -41,7 +41,6 @@ class CreateNotes extends Component {
                               notesTitle: this.state.noteTitle,
                               notesData: this.state.noteData,
                          };
-                         console.log(data);
                          Axios.post(env.notes, data, { headers: { "Content-Type": "application/json" } })
                               .then((result) => {
                                    if (result.data.success === true) {
@@ -50,7 +49,7 @@ class CreateNotes extends Component {
                                         });
                                         openNotificationWithIcon("success", "Saved Successfully", "Your Note Has been Saved Successfully");
                                         // message.success("Registered Successfully", 2.5).then(message.info("Login now!"), 2.5);
-                                        this.props.history.push("/dashboard/notes");
+                                        this.props.history.push("/dashboard/notes?fr");
                                    }
                               })
                               .catch((e) => {
