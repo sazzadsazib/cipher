@@ -46,6 +46,7 @@ class Notes extends Component {
           };
      }
      componentDidMount() {
+          console.log(this.props);
           this.props.isMenuAvailable(true);
           if (this.props.noteReducer.notes === undefined || this.props.location.search === "?fr") {
                this.props
@@ -78,7 +79,7 @@ class Notes extends Component {
                                              md={{ span: 8, offset: 0 }}
                                              sm={{ span: 12, offset: 0 }}
                                              xs={{ span: 24, offset: 0 }}>
-                                             <div className={"note-cards"}>
+                                             <div className={this.props.darkTheme ? "note-cards-dark" : "note-cards"}>
                                                   <div onClick={() => this.props.history.push("/dashboard/notes/" + note._id)}>
                                                        <div className={"note-id"}>
                                                             <b>Note ID:</b> &nbsp;{note._id}
@@ -94,25 +95,47 @@ class Notes extends Component {
                                                             Created : &nbsp;{moment(note.createdAt).fromNow()}
                                                        </div>
                                                   </div>
-                                                  <Button
-                                                       onClick={() =>
-                                                            showDeleteConfirm(
-                                                                 {
-                                                                      username: this.props.authReducer.auth.data.username,
-                                                                      storedPassword: this.props.authReducer.auth.data.password,
-                                                                      noteId: note._id,
-                                                                 },
-                                                                 this.props
-                                                            )
-                                                       }
-                                                       type={"cipher-primary-inverse div-center flex light-grey-bg"}
-                                                       className={"mt-15px"}
-                                                       size={"small"}
-                                                       style={{ width: "80%" }}>
-                                                       <span className={"text-center div-center flex"}>
-                                                            <Icon type='delete' theme='filled' /> Delete
-                                                       </span>
-                                                  </Button>
+                                                  {this.props.darkTheme ? (
+                                                       <Button
+                                                            onClick={() =>
+                                                                 showDeleteConfirm(
+                                                                      {
+                                                                           username: this.props.authReducer.auth.data.username,
+                                                                           storedPassword: this.props.authReducer.auth.data.password,
+                                                                           noteId: note._id,
+                                                                      },
+                                                                      this.props
+                                                                 )
+                                                            }
+                                                            type={"cipher-primary-inverse div-center flex light-grey-bg dark-theme-button"}
+                                                            className={"mt-15px"}
+                                                            size={"small"}
+                                                            style={{ width: "80%" }}>
+                                                            <span className={"text-center div-center flex"}>
+                                                                 <Icon type='delete' theme='filled' /> Delete
+                                                            </span>
+                                                       </Button>
+                                                  ) : (
+                                                       <Button
+                                                            onClick={() =>
+                                                                 showDeleteConfirm(
+                                                                      {
+                                                                           username: this.props.authReducer.auth.data.username,
+                                                                           storedPassword: this.props.authReducer.auth.data.password,
+                                                                           noteId: note._id,
+                                                                      },
+                                                                      this.props
+                                                                 )
+                                                            }
+                                                            type={"cipher-primary-inverse div-center flex light-grey-bg"}
+                                                            className={"mt-15px"}
+                                                            size={"small"}
+                                                            style={{ width: "80%" }}>
+                                                            <span className={"text-center div-center flex"}>
+                                                                 <Icon type='delete' theme='filled' /> Delete
+                                                            </span>
+                                                       </Button>
+                                                  )}
                                              </div>
                                         </Col>
                                    ))

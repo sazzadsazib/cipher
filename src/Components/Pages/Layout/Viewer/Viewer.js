@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Row, Col, Button, Drawer, Slider, Divider, Select, Radio, Icon, notification } from "antd";
+import { Row, Col, Button, Drawer, Slider, Divider, Select, Radio, Icon, notification, Switch } from "antd";
 import "./../../../../assets/scss/pages/_viewer.scss";
 import moment from "moment";
 
@@ -37,7 +37,7 @@ class Viewer extends Component {
      }
      render() {
           return (
-               <div className={"layout-container"}>
+               <div className={this.props.darkTheme ? "layout-container-viewer-dark" : "layout-container"}>
                     <Row>
                          <Col xs={24}>
                               <div
@@ -78,6 +78,7 @@ class Viewer extends Component {
                          placement={"bottom"}
                          closable={true}
                          height={"50%"}
+                         className={this.props.darkTheme ? "dark-theme-drawer" : "light-theme-drawer"}
                          onClose={(e) => this.props.setVisible(false)}
                          visible={this.props.visible}>
                          <Row>
@@ -104,7 +105,24 @@ class Viewer extends Component {
                                    </Select>
                               </Col>
                               <Col xs={8}>
-                                   <p className={"small-title"}>Font Justify</p>
+                                   <p className={"small-title"}>Dark Mode</p>
+                                   <Switch
+                                        checked={this.props.darkTheme}
+                                        className={"cipher-switch"}
+                                        defaultChecked
+                                        onChange={(e) => {
+                                             this.props.darkThemeSet(e);
+                                             localStorage.setItem(process.env.REACT_APP_ENC_DARK_THEME, e);
+                                        }}
+                                   />
+                              </Col>
+                              <br />
+                              <br />
+                         </Row>
+                         <Divider />
+                         <Row>
+                              <Col xs={24}>
+                                   <p className={"small-title"}>Font Align</p>
                                    <Radio.Group
                                         className={"minimal-radio-group"}
                                         size={"small"}
@@ -124,10 +142,7 @@ class Viewer extends Component {
                                         </Radio.Button>
                                    </Radio.Group>
                               </Col>
-                              <br />
-                              <br />
                          </Row>
-                         <Divider />
                     </Drawer>
                </div>
           );

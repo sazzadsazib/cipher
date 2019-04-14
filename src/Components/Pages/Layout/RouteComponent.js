@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Notes from "./Notes";
 import CreateNotes from "./CreateNotes";
 import Viewer from "./Viewer/Viewer";
+import Settings from "../Settings/Settings";
 
 class RouteComponent extends Component {
      render() {
@@ -12,7 +13,12 @@ class RouteComponent extends Component {
                          exact
                          path='/dashboard/notes'
                          render={(props) => (
-                              <Notes isMenuAvailable={this.props.isMenuAvailable} setCurrentState={this.props.setCurrentState} {...props} />
+                              <Notes
+                                   isMenuAvailable={this.props.isMenuAvailable}
+                                   setCurrentState={this.props.setCurrentState}
+                                   {...props}
+                                   {...this.props}
+                              />
                          )}
                     />
                     <Route
@@ -23,6 +29,7 @@ class RouteComponent extends Component {
                                    isMenuAvailable={this.props.isMenuAvailable}
                                    setCurrentState={this.props.setCurrentState}
                                    {...props}
+                                   {...this.props}
                               />
                          )}
                     />
@@ -36,6 +43,21 @@ class RouteComponent extends Component {
                                    setVisible={this.props.setVisible}
                                    setCurrentState={this.props.setCurrentState}
                                    {...props}
+                                   {...this.props}
+                              />
+                         )}
+                    />
+                    <Route
+                         exact
+                         path='/dashboard/settings'
+                         render={(props) => (
+                              <Settings
+                                   isMenuAvailable={this.props.isMenuAvailable}
+                                   visible={this.props.visible}
+                                   setVisible={this.props.setVisible}
+                                   setCurrentState={this.props.setCurrentState}
+                                   {...props}
+                                   {...this.props}
                               />
                          )}
                     />

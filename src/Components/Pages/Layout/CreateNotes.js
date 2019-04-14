@@ -85,7 +85,9 @@ class CreateNotes extends Component {
                               {/*<div className={"caret-title"}>Create Your Notes</div>*/}
                               {/*</Col>*/}
                               {/*</Row>*/}
-                              <Row className={"dashboard-normal-card"} style={{ minHeight: "70vh" }}>
+                              <Row
+                                   className={this.props.darkTheme ? "dashboard-normal-card-dark" : "dashboard-normal-card"}
+                                   style={{ minHeight: "85vh" }}>
                                    <Col sm={{ span: 16, offset: 4 }} xs={{ span: 22, offset: 1 }}>
                                         <div className={"title-post-note"}>Provide a Title</div>
                                         <Input

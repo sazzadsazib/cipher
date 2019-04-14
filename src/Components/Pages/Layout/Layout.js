@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import RouteComponent from "./RouteComponent";
 import { Offline, Online } from "react-detect-offline";
 import { getNotes } from "../../../Redux/Action/notesAction";
+import "./../../../assets/scss/pages/_theme.scss";
 
 const { Header, Sider } = Layout;
 
@@ -33,10 +34,14 @@ class DashboardLayout extends Component {
                isMenuAvailable: false,
                visible: false,
                apiLoaded: false,
+               darkTheme: JSON.parse(localStorage.getItem(process.env.REACT_APP_ENC_DARK_THEME)),
           };
           this.toggle = this.toggle.bind(this);
           this.onNavClick = this.onNavClick.bind(this);
           this.onLogout = this.onLogout.bind(this);
+          if (localStorage.getItem(process.env.REACT_APP_ENC_DARK_THEME) === null) {
+               localStorage.setItem(process.env.REACT_APP_ENC_DARK_THEME, false);
+          }
      }
 
      toggle() {
@@ -88,7 +93,7 @@ class DashboardLayout extends Component {
                </Menu>
           );
           return (
-               <Layout style={{ minHeight: "100vh" }}>
+               <Layout style={{ minHeight: "100vh" }} className={this.state.darkTheme ? "dark-theme" : "light-theme"}>
                     {window.innerWidth > 600 ? (
                          <Sider
                               style={{ overflow: "auto", height: "100vh", position: "fixed", left: 0 }}
@@ -181,14 +186,14 @@ class DashboardLayout extends Component {
                          }>
                          {window.innerWidth > 600 ? (
                               <Header
+                                   className={this.state.darkTheme ? "dark-theme-header" : "light-theme-header"}
                                    style={{
-                                        background: "#fff",
                                         padding: 0,
                                         position: "fixed",
                                         top: "0",
-                                        width: this.state.collapsed ? window.innerWidth - 80 : window.innerWidth - 200,
+                                        width: this.state.collapsed ? window.innerWidth - 79 : window.innerWidth - 200,
                                         zIndex: "100",
-                                        boxShadow: "1px 2px 4px #c4d6e894",
+                                        left: "79px",
                                    }}>
                                    <Icon
                                         className='trigger'
@@ -275,14 +280,13 @@ class DashboardLayout extends Component {
                               </Header>
                          ) : (
                               <Header
+                                   className={this.state.darkTheme ? "dark-theme-header" : "light-theme-header"}
                                    style={{
-                                        background: "#fff",
                                         padding: 0,
                                         position: "fixed",
                                         top: "0",
                                         width: this.state.collapsed ? window.innerWidth : window.innerWidth - 200,
                                         zIndex: "1",
-                                        boxShadow: "1px 2px 4px #c4d6e894",
                                    }}>
                                    <Icon
                                         className='trigger'
@@ -385,6 +389,8 @@ class DashboardLayout extends Component {
                                    setVisible={(x) => this.setState({ visible: x })}
                                    setCurrentState={(x) => this.setState({ currentActiveState: x })}
                                    isMenuAvailable={(x) => this.setState({ isMenuAvailable: x })}
+                                   darkThemeSet={(x) => this.setState({ darkTheme: x })}
+                                   darkTheme={this.state.darkTheme}
                               />
                          </div>
                          {/*<Footer style={{ textAlign: 'center' }}>*/}

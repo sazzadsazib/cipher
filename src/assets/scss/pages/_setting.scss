@@ -1,0 +1,23 @@
+@import "../variable";
+.header-css {
+  font-weight: bold;
+  color: $color-1;
+  font-size: 20px;
+}
+.fl-r{
+  float: right;
+  &::after {
+    clear: both;
+  }
+}
+.settings-menu {
+  font-size: 16px;
+  color: $LightBlack;
+  width: 100%;
+}
+.ant-switch {
+  background: $color-2;
+}
+.ant-switch-checked {
+    background: $color-1;
+}

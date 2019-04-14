@@ -1,0 +1,89 @@
+@import "./../variable";
+.dark-theme {
+}
+.light-theme {
+}
+.dark-theme > .ant-layout-sider , .dark-theme > .ant-layout-sider >.ant-layout-sider-children >.ant-menu {
+  background: $darkTheme;
+  color: $darkThemeColor;
+}
+.dark-theme > .ant-layout-sider >.ant-layout-sider-children >.ant-menu > .ant-menu-item-selected {
+  color: $darkThemeColor;
+}
+.light-theme-header {
+  background: #fff;
+  box-shadow: 1px 2px 4px #c4d6e894;
+}
+.dark-theme-header {
+  background: $darkTheme;
+  box-shadow: 1px 2px 4px rgba(39, 42, 46, 0.58);
+  color: $darkThemeColor;
+
+}
+.dark-theme > .ant-layout {
+  background: $LightBlack;
+}
+.dark-theme > .ant-layout-sider > .ant-layout-sider-children {
+  border: none;
+}
+.layout-container-dark {
+  //background: $darkTheme;
+  margin: 10px;
+  padding: 15px;
+  //min-height: 77vh;
+}
+.settings-menu-dark {
+  font-size: 16px;
+  color: $darkThemeColor;
+  width: 100%;
+}
+.note-cards-dark{
+  background: $darkTheme;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 251, 0.2);
+  transition: all 0.2s ease-in;
+  transform: scale(0.95);
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 0px 20px rgba(214, 214, 207, 0.35);
+  }
+}
+.note-cards-dark > div > .note-id,.note-cards-dark > div > .note-description {
+  color: $darkThemeColorDark;
+}
+.note-cards-dark > div > .note-title {
+  color: $darkThemeColor;
+}
+.dark-theme-button {
+  background: $darkThemeColor!important;
+  color: $darkTheme;
+}
+.layout-container-viewer-dark {
+  background: $darkTheme;
+  margin: 10px;
+  padding: 15px;
+  color: $darkThemeColor
+}
+.dashboard-normal-card-dark {
+  background: $darkTheme;
+  margin: 20px 10px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(39, 42, 46, 0.58);
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px 0px 20px rgba(39, 42, 46, 0.58);
+  }
+}
+.dark-theme-drawer > div > div,
+.dark-theme-drawer > div > div > div > .ant-drawer-header
+{
+  background: $darkTheme;
+  color: $darkThemeColor;
+  .ant-drawer-title, button {
+    color: $darkThemeColor;
+  }
+}
