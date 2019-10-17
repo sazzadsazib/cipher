@@ -8398,9 +8398,9 @@ react-app-polyfill@^0.2.2:
     raf "3.4.1"
     whatwg-fetch "3.0.0"
 
-react-detect-offline@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/react-detect-offline/-/react-detect-offline-2.3.0.tgz#7ff517a85d549ca27a70b3631ca5b18d95d78a06"
+react-detect-offline@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-detect-offline/-/react-detect-offline-2.4.0.tgz#e40f5a588ffb0680bcbcfa33e4d9d39ad805c3ff"
 
 react-dev-utils@^8.0.0:
   version "8.0.0"
