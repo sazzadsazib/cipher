@@ -8445,9 +8445,9 @@ react-error-overlay@^5.1.4:
   version "5.1.4"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.4.tgz#88dfb88857c18ceb3b9f95076f850d7121776991"
 
-react-google-login@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/react-google-login/-/react-google-login-5.0.2.tgz#0eb7964afd53e4a8cd80159b166b3079072717da"
+react-google-login@^5.0.6:
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/react-google-login/-/react-google-login-5.0.6.tgz#43234009f119311a882e7f9ddd4cebfaad737b43"
   dependencies:
     "@types/react" "*"
     prop-types "^15.6.0"
